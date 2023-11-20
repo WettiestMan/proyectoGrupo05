@@ -4,6 +4,13 @@
 
 package com.grupo06.View;
 
+import com.grupo06.Config.Config;
+import com.grupo06.Connector.Connector;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
 /**
  *
  * @author santi
@@ -11,6 +18,15 @@ package com.grupo06.View;
 public class ProyectoImportante {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        Connector con = new Connector();
+        
+        Connection cn = con.getConnection(Config.DATABASE_NAME);
+        try {
+            Statement stmt = cn.createStatement();
+            ResultSet rs = stmt.executeQuery("");
+            
+        } catch (SQLException err) {
+            System.out.println(err);
+        }
     }
 }
