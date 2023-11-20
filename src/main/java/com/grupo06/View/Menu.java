@@ -2,18 +2,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package com.grupo06.View.customPanel;
+package com.grupo06.View;
 
 /**
  *
  * @author USER
  */
-public class CustomRoundedInfoPanel extends javax.swing.JPanel {
+public class Menu extends javax.swing.JPanel {
 
     /**
-     * Creates new form CustomRoundedInfoPanel
+     * Creates new form Menu
      */
-    public CustomRoundedInfoPanel() {
+    public Menu() {
         initComponents();
     }
 
