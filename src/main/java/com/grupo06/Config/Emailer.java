@@ -17,6 +17,7 @@ import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 
 import com.grupo06.Model.EmailSender;
+import javax.swing.JOptionPane;
 /**
  *
  * @author santi
@@ -57,8 +58,9 @@ public class Emailer {
                     mimeMessage.addRecipient(Message.RecipientType.TO,
                     new InternetAddress(mailAddr));
                 }catch(MessagingException e){
-                    e.printStackTrace();
-                    System.exit(1);
+                    JOptionPane.showMessageDialog(null,
+                            e.getCause(), "Error",
+                            JOptionPane.ERROR_MESSAGE);
                 }});
         
         MimeMultipart multiPart = new MimeMultipart();
