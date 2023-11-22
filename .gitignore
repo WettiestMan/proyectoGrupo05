@@ -1,1 +1,12 @@
 /target/
+Config.java
+test.java
+test.form
+**/private/
+**/Makefile-*.mk
+**/Package-*.bash
+build/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/

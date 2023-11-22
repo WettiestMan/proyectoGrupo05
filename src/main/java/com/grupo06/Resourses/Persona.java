@@ -2,12 +2,20 @@ package com.grupo06.Resourses;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.io.Serializable;
 
-public abstract class Persona implements Serializable{
+public abstract class Persona implements Serializable {
     protected LocalDate fechaNacimiento;
     protected int DNI;
     protected String nombre;
     protected String apellidos;
+
+    public Persona(LocalDate fechaNacimiento, int DNI, String nombre, String apellidos) {
+        this.fechaNacimiento = fechaNacimiento;
+        this.DNI = DNI;
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+    }
 
     public LocalDate getFechaNacimiento() {
         return fechaNacimiento;
@@ -41,6 +49,7 @@ public abstract class Persona implements Serializable{
         this.apellidos = apellidos;
     }
     
-    
-    
+    @Override
+    public abstract String toString();
+        
 }
