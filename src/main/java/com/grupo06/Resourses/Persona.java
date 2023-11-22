@@ -9,6 +9,13 @@ public abstract class Persona implements Serializable {
     protected String nombre;
     protected String apellidos;
 
+    public Persona(LocalDate fechaNacimiento, int DNI, String nombre, String apellidos) {
+        this.fechaNacimiento = fechaNacimiento;
+        this.DNI = DNI;
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+    }
+
     public LocalDate getFechaNacimiento() {
         return fechaNacimiento;
     }
