@@ -24,13 +24,13 @@ public class Estudiante extends Persona{
         this.numTelefono = numTelefono; 
     }
 
-   /* public byte getGrado() {
+    public byte getGrado() {
         return grado;
-    }*/
+    }
 
-//    public void setGrado(byte grado) {
-//        this.grado = grado;
-//    }
+    public void setGrado(byte grado) {
+        this.grado = grado;
+    }
 
     public String getCorreo() {
         return correo;
