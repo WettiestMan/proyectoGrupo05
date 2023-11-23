@@ -1,4 +1,4 @@
-package com.grupo6.Resourses.sql;
+package com.grupo06.Resourses.sql;
 
 import com.grupo06.Connector.*;
 import com.grupo06.Resourses.Estudiante;
