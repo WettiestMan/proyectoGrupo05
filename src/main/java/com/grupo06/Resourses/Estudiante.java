@@ -12,7 +12,7 @@ import java.time.LocalDate;
  */
 public class Estudiante extends Persona{
 
-    private byte grado;         // Esto es según el diagrama de clases propuesto anteriormente, no se si requiera ser quitado o no
+    //private byte grado;         // Esto es según el diagrama de clases propuesto anteriormente, no se si requiera ser quitado o no
     private String correo;
     private int numTelefono;
     
@@ -24,13 +24,13 @@ public class Estudiante extends Persona{
         this.numTelefono = numTelefono; 
     }
 
-    public byte getGrado() {
+   /* public byte getGrado() {
         return grado;
-    }
+    }*/
 
-    public void setGrado(byte grado) {
-        this.grado = grado;
-    }
+//    public void setGrado(byte grado) {
+//        this.grado = grado;
+//    }
 
     public String getCorreo() {
         return correo;
@@ -51,9 +51,9 @@ public class Estudiante extends Persona{
     @Override
     public String toString() {
         return String.format("[fechaNacimiento: %s, Nombre: %s, "
-                + "Apellidos: %s, DNI: %d, Grado: %d, Correo: %s, "
+                + "Apellidos: %s, DNI: %d, Correo: %s, "
                 + "Número de teléfono: %d]", fechaNacimiento, nombre,
-                apellidos, DNI, grado, correo, numTelefono);
+                apellidos, DNI, correo, numTelefono);
     }
     
 }
