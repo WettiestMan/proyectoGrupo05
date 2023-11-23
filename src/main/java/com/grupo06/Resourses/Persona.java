@@ -48,6 +48,8 @@ public abstract class Persona implements Serializable {
         this.apellidos = apellidos;
     }
     
+    //public abstract String toQuery();
+    
     @Override
     public abstract String toString();
         
