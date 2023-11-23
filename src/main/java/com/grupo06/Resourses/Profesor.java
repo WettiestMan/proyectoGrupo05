@@ -11,6 +11,7 @@ import java.math.BigDecimal;
  * @author santi
  */
 public class Profesor implements java.io.Serializable{
+    private Integer id;
     private String nombre;
     private String apellidos;
     private BigDecimal sueldo;
@@ -19,6 +20,22 @@ public class Profesor implements java.io.Serializable{
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.sueldo = sueldo;
+        this.id = null;
+    }
+
+    public Profesor(Integer id, String nombre, String apellidos, BigDecimal sueldo) {
+        this.id = id;
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.sueldo = sueldo;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getNombre() {
