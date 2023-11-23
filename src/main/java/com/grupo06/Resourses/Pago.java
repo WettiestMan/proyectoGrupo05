@@ -11,12 +11,39 @@ import java.time.LocalDate;
  * @author santi
  */
 public class Pago implements java.io.Serializable{
+    private Integer id;
+    private Integer idEmp;
     private int dni;
     private LocalDate fecha;
 
     public Pago(int dni, LocalDate fecha) {
         this.dni = dni;
         this.fecha = fecha;
+        this.id = null;
+        this.idEmp = null;
+    }
+
+    public Pago(Integer id, Integer idEmp, int dni, LocalDate fecha) {
+        this.id = id;
+        this.idEmp = idEmp;
+        this.dni = dni;
+        this.fecha = fecha;
+    }
+
+    public Integer getIdEmp() {
+        return idEmp;
+    }
+
+    public void setIdEmp(Integer idEmp) {
+        this.idEmp = idEmp;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public int getDni() {
