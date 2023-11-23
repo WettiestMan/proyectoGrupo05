@@ -38,6 +38,7 @@ public class SQLEstudiante {
         } catch (SQLException ex) {
             ex.printStackTrace(System.out);
         } finally {
+            
             try {
                 Connector.close(rs);
                 Connector.close(pstmt);
