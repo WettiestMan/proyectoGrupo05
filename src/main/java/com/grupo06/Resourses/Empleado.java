@@ -12,6 +12,7 @@ public class Empleado implements java.io.Serializable{
     public String nombre;
     public String apellido;
     public String cargo;
+    public String contrasena;
 
     public String getNombre() {
         return nombre;
@@ -36,8 +37,13 @@ public class Empleado implements java.io.Serializable{
     public void setCargo(String cargo) {
         this.cargo = cargo;
     }
-    
-    
-    
+
+    public String getContrasena() {
+        return contrasena;
+    }
+
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
+    }
     
 }
