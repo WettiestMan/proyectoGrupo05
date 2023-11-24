@@ -140,5 +140,4 @@ public class SQLEstudiante {
         
         return registros;
     }
-    
 }

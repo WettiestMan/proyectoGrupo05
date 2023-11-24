@@ -9,10 +9,34 @@ package com.grupo06.Resourses;
  * @author santi
  */
 public class Empleado implements java.io.Serializable{
-    public String nombre;
-    public String apellido;
-    public String cargo;
-    public String contrasena;
+    private Integer id;
+    private String nombre;
+    private String apellido;
+    private String cargo;
+    private String contrasena;
+
+    public Empleado(String nombre, String apellido, String cargo, String contrasena) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.cargo = cargo;
+        this.contrasena = contrasena;
+    }
+
+    public Empleado(Integer id, String nombre, String apellido, String cargo, String contrasena) {
+        this.id = id;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.cargo = cargo;
+        this.contrasena = contrasena;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public String getNombre() {
         return nombre;

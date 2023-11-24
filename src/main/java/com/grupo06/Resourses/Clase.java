@@ -9,6 +9,7 @@ package com.grupo06.Resourses;
  * @author santi
  */
 public class Clase implements java.io.Serializable{
+    private Integer id;
     private String nivel;
     private byte grado;
     private char seccion;
@@ -17,6 +18,22 @@ public class Clase implements java.io.Serializable{
         this.nivel = nivel;
         this.grado = grado;
         this.seccion = seccion;
+        this.id = null;
+    }
+
+    public Clase(Integer id, String nivel, byte grado, char seccion) {
+        this.id = id;
+        this.nivel = nivel;
+        this.grado = grado;
+        this.seccion = seccion;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getNivel() {

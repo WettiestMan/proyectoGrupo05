@@ -1,4 +1,4 @@
-package com.malbarado.views.scroll;
+package com.grupo06.View.scroll;
 
 import java.awt.Container;
 import java.awt.EventQueue;
