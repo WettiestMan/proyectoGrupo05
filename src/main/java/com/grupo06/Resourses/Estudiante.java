@@ -7,8 +7,8 @@ public class Estudiante extends Persona{
     private byte grado;         
     private String correo;
     private int numTelefono;
-    
-    public Estudiante(Integer id, LocalDate fechaNacimiento, int DNI, String nombre,
+  
+    public Estudiante(Integer id, LocalDate fechaNacimiento, String DNI, String nombre,
             String apellidos, byte grado, String correo, int numTelefono){
         super(id, fechaNacimiento, DNI, nombre, apellidos);
         this.grado = grado;
@@ -43,7 +43,7 @@ public class Estudiante extends Persona{
     @Override
     public String toString() {
         return String.format("[fechaNacimiento: %s, Nombre: %s, "
-                + "Apellidos: %s, DNI: %d, Grado: %d, Correo: %s, "
+                + "Apellidos: %s, DNI: %s, Grado: %d, Correo: %s, "
                 + "Número de teléfono: %d]", fechaNacimiento, nombre,
                 apellidos, DNI, grado, correo, numTelefono);
     }
