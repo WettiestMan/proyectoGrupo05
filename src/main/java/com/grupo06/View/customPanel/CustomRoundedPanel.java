@@ -1,4 +1,4 @@
-package com.malbarado.views.customPanel;
+package com.grupo06.View.customPanel;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -47,6 +47,10 @@ public class CustomRoundedPanel extends JPanel {
 
         g2d.setColor(Color.WHITE);
         g2d.fillRoundRect(0, 0, w - modifier, h - modifier, arcs.width, arcs.height);
+    }
+
+    void setState(int MONEY) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
 

@@ -1,4 +1,4 @@
-package com.malbarado.views.customPanel;
+package com.grupo06.View.customPanel;
 
 import java.awt.Color;
 import java.awt.GradientPaint;

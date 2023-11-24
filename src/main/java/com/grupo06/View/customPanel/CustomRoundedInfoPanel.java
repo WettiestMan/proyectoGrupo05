@@ -1,15 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package com.grupo06.View.customPanel;
 
-/**
- *
- * @author USER
- */
-public class CustomRoundedInfoPanel extends javax.swing.JPanel {
+import java.awt.Color;
 
+public class CustomRoundedInfoPanel extends CustomRoundedPanel {
+
+    private int state;
+    private int money = 0;
+    
     /**
      * Creates new form CustomRoundedInfoPanel
      */
@@ -17,6 +14,42 @@ public class CustomRoundedInfoPanel extends javax.swing.JPanel {
         initComponents();
     }
 
+    public void setState(int state) {
+        this.state = state;
+        this.buttonInfoPanel1.setState(state);
+        switch (this.state) {
+            case 0 -> {
+                this.jLabel1.setForeground(new Color(0, 202, 78));
+                this.jLabel2.setText("Últimos ingresos");
+            }
+            case 1 -> {
+                this.jLabel1.setForeground(new Color(255, 189, 68));
+                this.jLabel2.setText("Dinero en caja");
+                
+            }
+            case 2 -> {
+                this.jLabel1.setForeground(new Color(255, 96, 92));
+                this.jLabel2.setText("Últimos egresos");
+            }
+            default -> {
+                this.jLabel1.setForeground(new Color(0, 202, 78));
+                this.jLabel2.setText("");
+            }
+        }
+        
+        this.jLabel1.setText("S/. *******");
+        
+        this.jCheckBox1.setSelected(true);
+        
+        repaint();
+    }
+    
+    public void setMoney(String text) {
+        this.jLabel1.setText(text);
+    }
+    
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -26,19 +59,82 @@ public class CustomRoundedInfoPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonInfoPanel1 = new com.grupo06.View.customPanel.ButtonInfoPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jCheckBox1 = new javax.swing.JCheckBox();
+
+        buttonInfoPanel1.setMaximumSize(new java.awt.Dimension(30, 30));
+        buttonInfoPanel1.setMinimumSize(new java.awt.Dimension(30, 30));
+        buttonInfoPanel1.setPreferredSize(new java.awt.Dimension(30, 30));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
+        jLabel1.setText("Text");
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel2.setText("Example text");
+
+        jCheckBox1.setText("Ocultar");
+        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jCheckBox1)
+                .addGap(26, 26, 26))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(buttonInfoPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(25, 25, 25)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(jLabel2)))
+                .addContainerGap(114, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(buttonInfoPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel1)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addComponent(jCheckBox1)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel2)
+                .addGap(28, 28, 28))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+        
+        if (this.jCheckBox1.isSelected()) {
+            this.jLabel1.setText("S/. *******");
+        } else {
+            this.jLabel1.setText("S/. "+ String.valueOf(money/100.00));
+        }
+        
+        
+    }//GEN-LAST:event_jCheckBox1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private com.grupo06.View.customPanel.ButtonInfoPanel buttonInfoPanel1;
+    private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }

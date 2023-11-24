@@ -28,24 +28,18 @@ public class Login extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        customRoundedPanel1 = new com.malbarado.views.customPanel.CustomRoundedPanel();
-        txtId = new javax.swing.JTextField();
+        customRoundedPanel1 = new com.grupo06.View.customPanel.CustomRoundedPanel();
+        txtPassword = new javax.swing.JPasswordField();
         jButton1 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        txtId = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        txtPassword = new javax.swing.JPasswordField();
 
         setMaximumSize(new java.awt.Dimension(1024, 620));
         setMinimumSize(new java.awt.Dimension(1024, 620));
         setOpaque(false);
         setLayout(new java.awt.GridBagLayout());
-
-        txtId.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtIdActionPerformed(evt);
-            }
-        });
 
         jButton1.setText("Registrarse");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -54,12 +48,18 @@ public class Login extends javax.swing.JPanel {
             }
         });
 
+        jLabel3.setText("Contraseña");
+
+        txtId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtIdActionPerformed(evt);
+            }
+        });
+
         jLabel1.setText("ID Empleado");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel2.setText("Registro");
-
-        jLabel3.setText("Contraseña");
 
         javax.swing.GroupLayout customRoundedPanel1Layout = new javax.swing.GroupLayout(customRoundedPanel1);
         customRoundedPanel1.setLayout(customRoundedPanel1Layout);
@@ -104,19 +104,18 @@ public class Login extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       
-        
+
         int ID = 0;
-        String Password = Funciones.encryptPassword(String.valueOf(this.txtPassword.getPassword()));   
-        
+        String Password = Funciones.encryptPassword(String.valueOf(this.txtPassword.getPassword()));
+
         try {
             ID = Integer.parseInt(this.txtId.getText());
-        
+
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "El ID que insertó no es un ID valido", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        
+
         ((Main) SwingUtilities.getWindowAncestor(this)).changePage(ID, Password);
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -126,7 +125,7 @@ public class Login extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private com.malbarado.views.customPanel.CustomRoundedPanel customRoundedPanel1;
+    private com.grupo06.View.customPanel.CustomRoundedPanel customRoundedPanel1;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
