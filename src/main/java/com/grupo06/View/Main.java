@@ -47,6 +47,7 @@ public class Main extends javax.swing.JFrame {
         content.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         content.setMaximumSize(new java.awt.Dimension(1024, 620));
         content.setMinimumSize(new java.awt.Dimension(1024, 620));
+        content.setOpaque(false);
         content.setPreferredSize(new java.awt.Dimension(1024, 620));
 
         javax.swing.GroupLayout contentLayout = new javax.swing.GroupLayout(content);
@@ -71,12 +72,7 @@ public class Main extends javax.swing.JFrame {
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         FlatLightLaf.setup();
-        
-        
-        
-        
-        
-        
+                
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
             new Main().setVisible(true);
@@ -88,7 +84,18 @@ public class Main extends javax.swing.JFrame {
         String consulta = "SELECT Contrasena FROM Empleados WHERE id_Empleado = ?";
         
         
+        if (true) {
         
+            MasterForm MF = new MasterForm();
+            
+            MF.setSize(1024, 620);
+            
+            this.content.removeAll();
+            this.content.add(MF);
+            this.content.revalidate();
+            this.content.repaint();
+        
+        }
         
         
     }

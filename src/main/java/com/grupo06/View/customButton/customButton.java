@@ -12,11 +12,13 @@ public class customButton extends javax.swing.JButton {
     private Color backgrounColor = new Color(255,255,255);
 
     public customButton(int cornerRadius) {
+        super("asdfas");
         this.cornerRadius = cornerRadius;
         setOpaque(false);
     }
 
     public customButton() {
+        super("asdf");
         this.cornerRadius = 10;
         setOpaque(false);
     }
@@ -39,7 +41,6 @@ public class customButton extends javax.swing.JButton {
         
         
         super.paintComponent(g);
-        g2d.dispose();
         
     }
 }
