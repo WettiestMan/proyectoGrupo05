@@ -14,8 +14,8 @@ import java.util.List;
 public class SQLEstudiante {
 
     private static final String SELECT = "SELECT * FROM Estudiantes";
-    private static final String INSERT = "INSERT INTO Estudiantes(fechaNac,Nombre,Apellidos,Grado,DNI,Correo,numero_telefonico) VALUES(?,?,?,?,?,?,?)";
-    private static final String UPDATE = "UPDATE Estudiantes SET fechaNac=?,Nombre=?,Apellidos=?,Grado=?,DNI=?,Correo=?,numero_telefonico=? WHERE id_Estudiante=?";
+    private static final String INSERT = "INSERT INTO Estudiantes(fechaNac,DNI,Nombre,Apellidos,Grado,Correo,numero_telefonico) VALUES(?,?,?,?,?,?,?)";
+    private static final String UPDATE = "UPDATE Estudiantes SET fechaNac=?,DNI=?,Nombre=?,Apellidos=?,Grado=?,Correo=?,numero_telefonico=? WHERE id_Estudiante=?";
     private static final String DELETE = "DELETE FROM Estudiantes WHERE id_Estudiante=?";
 
     public List<Estudiante> SQL_SELECT() {
@@ -65,10 +65,10 @@ public class SQLEstudiante {
             conn = Connector.getConnection("DB_Escuela");
             pstmt = conn.prepareStatement(INSERT);
             pstmt.setDate(1, (Date) Date.from(estudiante.getFechaNacimiento().atStartOfDay(ZoneId.systemDefault()).toInstant()));
-            pstmt.setString(2, estudiante.getNombre());
-            pstmt.setString(3, estudiante.getApellidos());
-            pstmt.setByte(4, estudiante.getGrado());
-            pstmt.setString(5, estudiante.getDNI());
+            pstmt.setString(2, estudiante.getDNI());
+            pstmt.setString(3, estudiante.getNombre());
+            pstmt.setString(4, estudiante.getApellidos());
+            pstmt.setByte(5, estudiante.getGrado());
             pstmt.setString(6, estudiante.getCorreo());
             pstmt.setInt(7, estudiante.getNumTelefono());
          
@@ -95,10 +95,10 @@ public class SQLEstudiante {
             conn = Connector.getConnection("DB_Escuela");
             pstmt = conn.prepareStatement(UPDATE);
             pstmt.setDate(1, (Date) Date.from(estudiante.getFechaNacimiento().atStartOfDay(ZoneId.systemDefault()).toInstant()));
-            pstmt.setString(2, estudiante.getNombre());
-            pstmt.setString(3, estudiante.getApellidos());
-            pstmt.setByte(4, estudiante.getGrado());
-            pstmt.setString(5, estudiante.getDNI());
+            pstmt.setString(2, estudiante.getDNI());
+            pstmt.setString(3, estudiante.getNombre());
+            pstmt.setString(4, estudiante.getApellidos());
+            pstmt.setByte(5, estudiante.getGrado());
             pstmt.setString(6, estudiante.getCorreo());
             pstmt.setInt(7, estudiante.getNumTelefono());
             pstmt.setInt(8, estudiante.getId());
