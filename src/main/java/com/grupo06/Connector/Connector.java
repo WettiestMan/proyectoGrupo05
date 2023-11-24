@@ -1,20 +1,10 @@
 package com.grupo06.Connector;
 
-<<<<<<< refs/remotes/origin/Gabo2
-import com.grupo06.Private.Config;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.*;
-import javax.sql.DataSource;
-import org.apache.commons.dbcp2.BasicDataSource;
-=======
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
->>>>>>> asd
 
 
 public class Connector {
