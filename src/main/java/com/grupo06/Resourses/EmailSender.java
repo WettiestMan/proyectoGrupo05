@@ -5,7 +5,8 @@
 package com.grupo06.Resourses;
 
 /**
- *
+ * Un Java Record que contiene el usuario y contraseña de un emisor
+ * 
  * @author santi
  */
 public record EmailSender(String usuario, String contrasenaAppl) {
