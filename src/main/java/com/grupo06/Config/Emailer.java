@@ -213,7 +213,7 @@ public class Emailer {
                     new InternetAddress(mailAddr));
                 }catch(MessagingException e){
                     JOptionPane.showMessageDialog(null,
-                            e.getCause(), "Error",
+                            e.getMessage(), "Error",
                             JOptionPane.ERROR_MESSAGE);
                 }});
     }
