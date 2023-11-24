@@ -16,7 +16,7 @@ import java.util.List;
  * @author Cristopher
  */
 public class SQLAsistente {
-    private static final String SELECT = "SELECT * FROM Asistente";
+    private static final String SELECT = "SELECT * FROM Asistentes";
     private static final String INSERT = "INSERT INTO Asistentes(fechaNac,DNI,nombre,apellidos,usuario,contrasena) VALUES(?,?,?,?,?,?)";
     private static final String UPDATE = "UPDATE Asistentes SET fechaNac=?,DNI=?,nombre=?,apellidos=?,usuario=?,contrasena=? WHERE id_Asistente=?";
     private static final String DELETE = "DELETE FROM Asistentes WHERE id_Asistente=?";
