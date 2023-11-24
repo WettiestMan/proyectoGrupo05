@@ -1,4 +1,4 @@
-package com.malbarado.views.customButton;
+package com.grupo06.View.customButton;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -12,11 +12,13 @@ public class customButton extends javax.swing.JButton {
     private Color backgrounColor = new Color(255,255,255);
 
     public customButton(int cornerRadius) {
+        super("asdfas");
         this.cornerRadius = cornerRadius;
         setOpaque(false);
     }
 
     public customButton() {
+        super("asdf");
         this.cornerRadius = 10;
         setOpaque(false);
     }
@@ -28,7 +30,8 @@ public class customButton extends javax.swing.JButton {
     
     @Override
     protected void paintComponent (Graphics g) {
-
+        
+        super.paintComponent(g);
         Dimension arcs = new Dimension(cornerRadius, cornerRadius);
         Graphics2D g2d = (Graphics2D) g;
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
@@ -38,8 +41,6 @@ public class customButton extends javax.swing.JButton {
         g2d.fillRoundRect(0, 0, w - 1, h - 1, arcs.width, arcs.height);
         
         
-        super.paintComponent(g);
-        g2d.dispose();
         
     }
 }
