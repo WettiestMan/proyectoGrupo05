@@ -1,10 +1,11 @@
 package com.grupo06.Resourses;
 
-import java.io.Serializable;
 import java.time.LocalDate;
 import java.io.Serializable;
 
+
 public abstract class Persona implements Serializable {
+    protected Integer id;
     protected LocalDate fechaNacimiento;
     protected int DNI;
     protected String nombre;
@@ -15,6 +16,23 @@ public abstract class Persona implements Serializable {
         this.DNI = DNI;
         this.nombre = nombre;
         this.apellidos = apellidos;
+        this.id = null;
+    }
+
+    public Persona(Integer id, LocalDate fechaNacimiento, int DNI, String nombre, String apellidos) {
+        this.id = id;
+        this.fechaNacimiento = fechaNacimiento;
+        this.DNI = DNI;
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public LocalDate getFechaNacimiento() {
@@ -48,6 +66,8 @@ public abstract class Persona implements Serializable {
     public void setApellidos(String apellidos) {
         this.apellidos = apellidos;
     }
+    
+    //public abstract String toQuery();
     
     @Override
     public abstract String toString();

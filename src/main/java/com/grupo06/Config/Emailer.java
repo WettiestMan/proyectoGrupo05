@@ -4,6 +4,8 @@
  */
 package com.grupo06.Config;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.Properties;
 import javax.mail.Message;
@@ -16,7 +18,7 @@ import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 
-import com.grupo06.Model.EmailSender;
+import com.grupo06.Resourses.EmailSender;
 import javax.swing.JOptionPane;
 /**
  *
@@ -30,6 +32,7 @@ public class Emailer {
     private String cuerpo;
     private EmailSender enviador;
     private String emailHost;
+    private String dirArchivoAdj;
     
     public Emailer(String asunto, String cuerpo,
             String[] destinatarios, EmailSender enviador) {
@@ -38,6 +41,18 @@ public class Emailer {
         this.enviador = enviador;
         this.destinatarios = destinatarios;
         this.emailHost = "smtp.gmail.com";
+        this.dirArchivoAdj = null;
+    }
+    
+    public Emailer(String asunto, String cuerpo,
+            String[] destinatarios, EmailSender enviador,
+            String direccion){
+        this.asunto = asunto;
+        this.cuerpo = cuerpo;
+        this.enviador = enviador;
+        this.destinatarios = destinatarios;
+        this.emailHost = "smtp.gmail.com";
+        this.dirArchivoAdj = direccion;
     }
     
     public void sendEmail() throws NoSuchProviderException, MessagingException{
@@ -48,10 +63,49 @@ public class Emailer {
         transport.close();
     }
 
-    public MimeMessage draftEmail() throws MessagingException{
+    public MimeMessage draftEmail() throws MessagingException, IOException{
         
+        if(dirArchivoAdj.equals(null)){
+            setupReceipients();
+
+            MimeMultipart multiPart = new MimeMultipart();
+
+            MimeBodyPart bodyPart = new MimeBodyPart();
+            bodyPart.setContent(cuerpo, "text/html;charset=UTF-8");
+            multiPart.addBodyPart(bodyPart);
+
+            mimeMessage.setSubject(asunto);
+            mimeMessage.setContent(multiPart);
+
+            return mimeMessage;
+        }
+        return draftEmail(dirArchivoAdj);
+    }
+    
+    public MimeMessage draftEmail(String nombreArchivo)
+            throws MessagingException, IOException{
+        setupReceipients();
+        
+        MimeMultipart multipart = new MimeMultipart();
+        
+        MimeBodyPart texto = new MimeBodyPart();
+        texto.setContent(cuerpo, "text/html;charset=UTF-8");
+        
+        MimeBodyPart archivo = new MimeBodyPart();
+        archivo.attachFile(new File(nombreArchivo));
+        
+        multipart.addBodyPart(texto);
+        multipart.addBodyPart(archivo);
+        
+        mimeMessage.setSubject(asunto);
+        mimeMessage.setContent(multipart);
+        
+        return mimeMessage;
+    }
+    
+    private void setupReceipients(){
         mimeMessage = new MimeMessage(newSession);
-        
+
         Arrays.stream(destinatarios)
             .forEach(mailAddr -> {
                 try{
@@ -62,17 +116,6 @@ public class Emailer {
                             e.getCause(), "Error",
                             JOptionPane.ERROR_MESSAGE);
                 }});
-        
-        MimeMultipart multiPart = new MimeMultipart();
-
-        MimeBodyPart bodyPart = new MimeBodyPart();
-        bodyPart.setContent(cuerpo, "text/html;charset=UTF-8");
-        multiPart.addBodyPart(bodyPart);
-        
-        mimeMessage.setSubject(asunto);
-        mimeMessage.setContent(multiPart);
-
-        return mimeMessage;
     }
     
     public void setupServerProperties(){
