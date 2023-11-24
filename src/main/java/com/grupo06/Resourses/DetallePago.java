@@ -5,7 +5,6 @@
 package com.grupo06.Resourses;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 
 /**
  *
@@ -13,19 +12,19 @@ import java.math.BigDecimal;
  */
 public class DetallePago implements Serializable {
     private Integer id;
-    private BigDecimal costo;
+    private int costo;
     private String descripcion;
     private String razon;
     private Integer idPag;
     private Integer idEstClas;
 
-    public DetallePago(BigDecimal costo, String descripcion, String razon) {
+    public DetallePago(int costo, String descripcion, String razon) {
         this.costo = costo;
         this.descripcion = descripcion;
         this.razon = razon;
     }
 
-    public DetallePago(Integer id, BigDecimal costo, String descripcion, String razon, Integer idPag, Integer idEstClas) {
+    public DetallePago(Integer id, int costo, String descripcion, String razon, Integer idPag, Integer idEstClas) {
         this.id = id;
         this.costo = costo;
         this.descripcion = descripcion;
@@ -58,11 +57,11 @@ public class DetallePago implements Serializable {
         this.idEstClas = idEstClas;
     }
 
-    public BigDecimal getCosto() {
+    public int getCosto() {
         return costo;
     }
 
-    public void setCosto(BigDecimal costo) {
+    public void setCosto(int costo) {
         this.costo = costo;
     }
 

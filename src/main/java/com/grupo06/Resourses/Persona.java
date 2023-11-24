@@ -7,11 +7,11 @@ import java.io.Serializable;
 public abstract class Persona implements Serializable {
     protected Integer id;
     protected LocalDate fechaNacimiento;
-    protected int DNI;
+    protected String DNI;
     protected String nombre;
     protected String apellidos;
 
-    public Persona(LocalDate fechaNacimiento, int DNI, String nombre, String apellidos) {
+    public Persona(LocalDate fechaNacimiento, String DNI, String nombre, String apellidos) {
         this.fechaNacimiento = fechaNacimiento;
         this.DNI = DNI;
         this.nombre = nombre;
@@ -19,7 +19,7 @@ public abstract class Persona implements Serializable {
         this.id = null;
     }
 
-    public Persona(Integer id, LocalDate fechaNacimiento, int DNI, String nombre, String apellidos) {
+    public Persona(Integer id, LocalDate fechaNacimiento, String DNI, String nombre, String apellidos) {
         this.id = id;
         this.fechaNacimiento = fechaNacimiento;
         this.DNI = DNI;
@@ -43,11 +43,11 @@ public abstract class Persona implements Serializable {
         this.fechaNacimiento = fechaNacimiento;
     }
 
-    public int getDNI() {
+    public String getDNI() {
         return DNI;
     }
 
-    public void setDNI(int DNI) {
+    public void setDNI(String DNI) {
         this.DNI = DNI;
     }
 

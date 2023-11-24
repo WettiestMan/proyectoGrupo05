@@ -11,23 +11,23 @@ import java.time.LocalDate;
  * @author santi
  */
 public class Cliente extends Persona {
-    private double deuda;
+    private int deuda;
     private String correo;
     private int numTelefono;
     
-    public Cliente(LocalDate fechaNacimiento, int DNI, String nombre,
-            String apellidos, double deuda, String correo, int numTelefono){
+    public Cliente(LocalDate fechaNacimiento, String DNI, String nombre,
+            String apellidos, int deuda, String correo, int numTelefono){
         super(fechaNacimiento, DNI, nombre, apellidos);
         this.deuda = deuda;
         this.correo = correo;
         this.numTelefono = numTelefono; 
     }
 
-    public double getDeuda() {
+    public int getDeuda() {
         return deuda;
     }
 
-    public void setDeuda(double deuda) {
+    public void setDeuda(int deuda) {
         this.deuda = deuda;
     }
 
@@ -50,7 +50,7 @@ public class Cliente extends Persona {
     @Override
     public String toString() {
         return String.format("[fechaNacimiento: %s, Nombre: %s, "
-                + "Apellidos: %s, DNI: %d, Deuda: %.2f, Correo: %s, "
+                + "Apellidos: %s, DNI: %s, Deuda: %.2f, Correo: %s, "
                 + "Número de teléfono: %d]", fechaNacimiento, nombre,
                 apellidos, DNI, deuda, correo, numTelefono);
     }
