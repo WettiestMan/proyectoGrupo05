@@ -8,9 +8,9 @@ public class Estudiante extends Persona{
     private String correo;
     private int numTelefono;
     
-    public Estudiante(LocalDate fechaNacimiento, int DNI, String nombre,
+    public Estudiante(Integer id, LocalDate fechaNacimiento, int DNI, String nombre,
             String apellidos, byte grado, String correo, int numTelefono){
-        super(fechaNacimiento, DNI, nombre, apellidos);
+        super(id, fechaNacimiento, DNI, nombre, apellidos);
         this.grado = grado;
         this.correo = correo;
         this.numTelefono = numTelefono; 
