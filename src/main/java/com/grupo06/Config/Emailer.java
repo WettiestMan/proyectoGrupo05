@@ -20,20 +20,71 @@ import javax.mail.internet.MimeMultipart;
 
 import com.grupo06.Resourses.EmailSender;
 import javax.swing.JOptionPane;
+
 /**
- *
+ * La clase Emailer ofrece clases y atributos para crear y enviar correos
+ * electrónicos, se utiliza de la siguiente manera:<br>
+ * 
+ * <code>
+ * Emailer em = new Emailer(...);<br>
+ * em.setupServerProperties();<br>
+ * em.draftEmail(filename //opcional);<br>
+ * em.sendEmail();<br>
+ * </code>
+ * 
  * @author santi
  */
 public class Emailer {
+    
+    /**
+     * Utilizado para configurar las propiedades de la conexión al host de
+     * correo electrónico
+     */
     private Session newSession = null;
+    
+    /**
+     * Para configurar el correo a enviar
+     */
     private MimeMessage mimeMessage = null;
+    
+    /**
+     * La lista de destinatarios
+     */
     private String[] destinatarios;
+    
+    /**
+     * Asunto de correo
+     */
     private String asunto;
+    
+    /**
+     * Cuerpo del correo
+     */
     private String cuerpo;
+    
+    /**
+     * Contiene la información del emisor
+     */
     private EmailSender enviador;
+    
+    /**
+     * El host de correo electrónico a conectarse
+     */
     private String emailHost;
+    
+    /**
+     * Una dirección a un archivo para adjuntar
+     */
     private String dirArchivoAdj;
     
+    /**
+     * Crea un obejto Emailer sin un archivo adjunto
+     * 
+     * @param asunto El asunto del correo a enviar
+     * @param cuerpo El cuerpo del correo a enviar
+     * @param destinatarios La lista de destinatarios
+     * @param enviador Un objeto EmailSender con los datos del emisor
+     */
     public Emailer(String asunto, String cuerpo,
             String[] destinatarios, EmailSender enviador) {
         this.asunto = asunto;
@@ -44,6 +95,16 @@ public class Emailer {
         this.dirArchivoAdj = null;
     }
     
+    /**
+     * Crea un obejto Emailer con un archivo adjunto
+     * 
+     * @param asunto El asunto del correo a enviar
+     * @param cuerpo El cuerpo del correo a enviar
+     * @param destinatarios La lista de destinatarios
+     * @param enviador Un objeto EmailSender con los datos del emisor
+     * @param direccion La dirección a un archivo a adjuntar en el correo a
+     * enviar
+     */
     public Emailer(String asunto, String cuerpo,
             String[] destinatarios, EmailSender enviador,
             String direccion){
@@ -55,6 +116,15 @@ public class Emailer {
         this.dirArchivoAdj = direccion;
     }
     
+    /**
+     * Envía un email utilizando el protocolo smtp y el host indicado por
+     * <code>emailHost</code> 
+     * 
+     * @throws NoSuchProviderException Si el host indicado por 
+     * <code>emailHost</code> no existe
+     * @throws MessagingException Excepción genérica por el uso de 
+     * <code>Transport</code>
+     */
     public void sendEmail() throws NoSuchProviderException, MessagingException{
         Transport transport = newSession.getTransport("smtp");
         transport.connect(emailHost, enviador.usuario(),
@@ -63,6 +133,20 @@ public class Emailer {
         transport.close();
     }
 
+    /**
+     * Genera un correo electrónico con cuerpo usando <code>mimeMessage</code>.
+     * Si se llama sobre un objeto con <code>dirArchivoAdj</code> diferente a
+     * <code>null</code>, llama a draftEmail(String nombreArchivo) utilizando
+     * <code>dirArchivoAdj</code>
+     * 
+     * @return un <code>MimeMessage</code> con el asunto, cuerpo y archivo
+     * adjunto asignados
+     * @throws MessagingException Por cualquier inconveniente generado por
+     * <code>MimeBodyPart</code> y <code>MimeMultiPart</code>
+     * @throws IOException Si el archivo no existe o por
+     * algún otro inconveniente generado al leer el archivo (si 
+     * <code>dirArchivoAdj</code> es diferente de <code>null</code>).
+     */
     public MimeMessage draftEmail() throws MessagingException, IOException{
         
         if(dirArchivoAdj.equals(null)){
@@ -82,6 +166,18 @@ public class Emailer {
         return draftEmail(dirArchivoAdj);
     }
     
+    /**
+     * Genera un correo electrónico con cuerpo y un archivo adjunto usando
+     * <code>mimeMessage</code>
+     * 
+     * @param nombreArchivo la dirección del archivo a adjuntar
+     * @return un <code>MimeMessage</code> con el asunto, cuerpo y archivo
+     * adjunto asignados
+     * @throws MessagingException Por cualquier inconveniente generado por
+     * <code>MimeBodyPart</code> y <code>MimeMultiPart</code>
+     * @throws IOException Si el archivo no existe o por
+     * algún otro inconveniente generado al leer el archivo.
+     */
     public MimeMessage draftEmail(String nombreArchivo)
             throws MessagingException, IOException{
         setupReceipients();
@@ -103,6 +199,10 @@ public class Emailer {
         return mimeMessage;
     }
     
+    /**
+     * Método interna llamada por draftEmail(), configura en mimeMessage los
+     * destinatarios que van a recibir el correo electrónico
+     */
     private void setupReceipients(){
         mimeMessage = new MimeMessage(newSession);
 
@@ -118,6 +218,11 @@ public class Emailer {
                 }});
     }
     
+    /**
+     * configura el objeto newSession para una conexión por el puerto 587
+     * (uno de los puertos con los que Gmail funciona), autentificación activada
+     * y tls activado.
+     */
     public void setupServerProperties(){
         Properties properties = System.getProperties();
         properties.put("mail.smtp.port", "587");
