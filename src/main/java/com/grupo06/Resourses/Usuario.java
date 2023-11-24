@@ -14,7 +14,7 @@ public class Usuario extends Persona {
     protected String usuario;
     protected String contrasena;
     
-    public Usuario(int id, LocalDate fechaNacimiento, int DNI, String nombre,
+    public Usuario(int id, LocalDate fechaNacimiento, String DNI, String nombre,
        String apellidos, String usuario, String contrasena) {
         super(id, fechaNacimiento, DNI, nombre, apellidos);
         this.usuario = usuario;

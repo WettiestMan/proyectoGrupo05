@@ -12,8 +12,8 @@ import java.time.LocalDate;
  */
 public class Asistente extends com.grupo06.Resourses.Usuario{
     
-    public Asistente(LocalDate fechaNacimiento, int DNI, String nombre, String apellidos, String usuario, String contrasena) {
-        super(fechaNacimiento, DNI, nombre, apellidos, usuario, contrasena);
+    public Asistente(int id, LocalDate fechaNacimiento, String DNI, String nombre, String apellidos, String usuario, String contrasena) {
+        super(id, fechaNacimiento, DNI, nombre, apellidos, usuario, contrasena);
     }
     
 }

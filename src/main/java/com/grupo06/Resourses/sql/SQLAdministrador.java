@@ -38,11 +38,11 @@ public class SQLAdministrador {
                 Date fechaNacimiento = rs.getDate("fechaNac");
                 String nombre = rs.getString("nombre");
                 String apellidos = rs.getString("apellidos");
-                int dni = rs.getInt("DNI");
+                String dni = rs.getString("DNI");
                 String usuario = rs.getString("usuario");
                 String contraseña = rs.getString("contraseña");
 
-                administrador = new Administrador(id,fechaNacimiento.toLocalDate(), nombre, apellidos,dni,usuario,contraseña);
+                administrador = new Administrador(id,fechaNacimiento.toLocalDate(),dni, nombre, apellidos, usuario,contraseña);
                 administradores.add(administrador);
             }
         } catch (SQLException ex) {
@@ -68,7 +68,7 @@ public class SQLAdministrador {
             conn = Connector.getConnection("db_escuela");
             pstmt = conn.prepareStatement(INSERT);
             pstmt.setDate(1, (Date) Date.from(administrador.getFechaNacimiento().atStartOfDay(ZoneId.systemDefault()).toInstant()));
-            pstmt.setInt(2, administrador.getDNI());
+            pstmt.setString(2, administrador.getDNI());
             pstmt.setString(3, administrador.getNombre());
             pstmt.setString(4, administrador.getApellidos());
             pstmt.setString(5, administrador.getUsuario());
@@ -97,7 +97,7 @@ public class SQLAdministrador {
             conn = Connector.getConnection("db_escuela");
             pstmt = conn.prepareStatement(UPDATE);
             pstmt.setDate(1, (Date) Date.from(administrador.getFechaNacimiento().atStartOfDay(ZoneId.systemDefault()).toInstant()));
-            pstmt.setInt(2, administrador.getDNI());
+            pstmt.setString(2, administrador.getDNI());
             pstmt.setString(3, administrador.getNombre());
             pstmt.setString(4, administrador.getApellidos());
             pstmt.setString(5, administrador.getUsuario());
