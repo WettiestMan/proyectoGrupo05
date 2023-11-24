@@ -18,7 +18,7 @@ import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 
-import com.grupo06.Model.EmailSender;
+import com.grupo06.Resourses.EmailSender;
 import javax.swing.JOptionPane;
 /**
  *
