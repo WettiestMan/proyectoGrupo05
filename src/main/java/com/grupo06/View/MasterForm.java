@@ -5,6 +5,8 @@
 package com.grupo06.View;
 
 import com.grupo06.event.EventMenuSelected;
+import com.grupo06.forms.Principal;
+import javax.swing.JPanel;
 
 /**
  *
@@ -18,12 +20,16 @@ public class MasterForm extends javax.swing.JPanel {
     public MasterForm(String tipo) {
         initComponents();
         
+        Principal pr = new Principal();
+        pr.setSize(744, 640);
+        
+        
         this.menu.initMoving(MasterForm.this);
         this.menu.addEventMenuSelected(new EventMenuSelected() {
             @Override
             public void selected(int index) {
                 switch (index) {
-                    case 2 -> System.out.println("c");
+                    case 2 -> setForm(pr);
                     case 3 -> System.out.println("d");
                     case 4 -> System.out.println("e");
                     case 5 -> System.out.println("f");
@@ -35,12 +41,20 @@ public class MasterForm extends javax.swing.JPanel {
         
     }
 
+    private void setForm(JPanel com) {
+        this.container.removeAll();
+        this.container.add(com);
+        this.container.repaint();
+        this.container.revalidate();
+    }
+
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
-        jPanel1 = new javax.swing.JPanel();
+        container = new javax.swing.JPanel();
         menu = new com.grupo06.component.Menu();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -48,29 +62,28 @@ public class MasterForm extends javax.swing.JPanel {
         setOpaque(false);
         setLayout(new java.awt.GridBagLayout());
 
-        jPanel1.setMaximumSize(new java.awt.Dimension(744, 640));
-        jPanel1.setMinimumSize(new java.awt.Dimension(744, 640));
-        jPanel1.setPreferredSize(new java.awt.Dimension(744, 640));
+        container.setMaximumSize(new java.awt.Dimension(744, 640));
+        container.setMinimumSize(new java.awt.Dimension(744, 640));
+        container.setPreferredSize(new java.awt.Dimension(744, 640));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout containerLayout = new javax.swing.GroupLayout(container);
+        container.setLayout(containerLayout);
+        containerLayout.setHorizontalGroup(
+            containerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 744, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        containerLayout.setVerticalGroup(
+            containerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 640, Short.MAX_VALUE)
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
-        add(jPanel1, gridBagConstraints);
+        add(container, gridBagConstraints);
 
         menu.setMaximumSize(new java.awt.Dimension(280, 640));
         menu.setMinimumSize(new java.awt.Dimension(280, 640));
-        menu.setPreferredSize(new java.awt.Dimension(280, 640));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
@@ -79,7 +92,7 @@ public class MasterForm extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel container;
     private com.grupo06.component.Menu menu;
     // End of variables declaration//GEN-END:variables
 }
