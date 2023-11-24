@@ -221,7 +221,7 @@ public class Emailer {
     /**
      * configura el objeto newSession para una conexión por el puerto 587
      * (uno de los puertos con los que Gmail funciona), autentificación activada
-     * y tls activado.
+     * y tls activado).
      */
     public void setupServerProperties(){
         Properties properties = System.getProperties();
