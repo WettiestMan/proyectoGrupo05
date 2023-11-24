@@ -18,8 +18,8 @@ import java.util.List;
  */
 public class SQLAdministrador {
     private static final String SELECT = "SELECT * FROM Administradores";
-    private static final String INSERT = "INSERT INTO Administradores(fechaNac,nombre,apellidos,DNI,usuario,contrasena) VALUES(?,?,?,?,?,?)";
-    private static final String UPDATE = "UPDATE Administradores SET fechaNac=?,nombre=?,apellidos=?,DNI=?,usuario=?,contrasena=? WHERE id_Administrador=?";
+    private static final String INSERT = "INSERT INTO Administradores(fechaNac,DNI,nombre,apellidos,usuario,contrasena) VALUES(?,?,?,?,?,?)";
+    private static final String UPDATE = "UPDATE Administradores SET fechaNac=?,DNI=?,nombre=?,apellidos=?,usuario=?,contrasena=? WHERE id_Administrador=?";
     private static final String DELETE = "DELETE FROM Administradores WHERE id_Administrador=?";
 
     public List<Administrador> SQL_SELECT() {
