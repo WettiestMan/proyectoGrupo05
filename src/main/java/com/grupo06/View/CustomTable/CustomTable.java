@@ -1,6 +1,7 @@
 package com.grupo06.View.CustomTable;
 
 import java.awt.Component;
+import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 
@@ -19,7 +20,20 @@ public class CustomTable extends JTable {
     
     
     public CustomTable() {
+        
+        setShowHorizontalLines(true);
         getTableHeader().setReorderingAllowed(false);
+        getTableHeader().setResizingAllowed(false);
+        getTableHeader().setDefaultRenderer(new DefaultTableCellRenderer() {
+            @Override
+            public Component getTableCellRendererComponent(JTable jtable, Object o, boolean bln, boolean bln1, int i, int i1) {
+                CustomTableHeader header = new CustomTableHeader(o + "");
+                header.setHorizontalAlignment(JLabel.CENTER);
+                
+                return header;
+            }
+        });
+        
         this.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         
         setRowHeight(32);
@@ -35,11 +49,8 @@ public class CustomTable extends JTable {
         });
      
         getColumnModel().getColumn(0).setPreferredWidth(32);
-        
         getColumnModel().getColumn(1).setPreferredWidth(323);
-        
         getColumnModel().getColumn(2).setPreferredWidth(160);
-        
         getColumnModel().getColumn(3).setPreferredWidth(160);
         
     }
