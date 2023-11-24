@@ -7,7 +7,7 @@ public class Estudiante extends Persona{
     private byte grado;         
     private String correo;
     private int numTelefono;
-    
+  
     public Estudiante(Integer id, LocalDate fechaNacimiento, String DNI, String nombre,
             String apellidos, byte grado, String correo, int numTelefono){
         super(id, fechaNacimiento, DNI, nombre, apellidos);

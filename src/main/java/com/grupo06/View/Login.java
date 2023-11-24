@@ -4,7 +4,7 @@
  */
 package com.grupo06.View;
 
-import javax.swing.JDialog;
+import com.grupo06.Config.Funciones;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
@@ -30,25 +30,20 @@ public class Login extends javax.swing.JPanel {
 
         customRoundedPanel1 = new com.malbarado.views.customPanel.CustomRoundedPanel();
         txtId = new javax.swing.JTextField();
-        txtPassword = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        txtPassword = new javax.swing.JPasswordField();
 
         setMaximumSize(new java.awt.Dimension(1024, 620));
         setMinimumSize(new java.awt.Dimension(1024, 620));
+        setOpaque(false);
         setLayout(new java.awt.GridBagLayout());
 
         txtId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtIdActionPerformed(evt);
-            }
-        });
-
-        txtPassword.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPasswordActionPerformed(evt);
             }
         });
 
@@ -77,13 +72,11 @@ public class Login extends javax.swing.JPanel {
                         .addComponent(jButton1))
                     .addGroup(customRoundedPanel1Layout.createSequentialGroup()
                         .addGap(58, 58, 58)
-                        .addGroup(customRoundedPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(customRoundedPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel3)
-                            .addGroup(customRoundedPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(customRoundedPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel1)
-                                    .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addComponent(jLabel1)
+                            .addComponent(txtId, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
+                            .addComponent(txtPassword)))
                     .addGroup(customRoundedPanel1Layout.createSequentialGroup()
                         .addGap(136, 136, 136)
                         .addComponent(jLabel2)))
@@ -110,25 +103,21 @@ public class Login extends javax.swing.JPanel {
         add(customRoundedPanel1, new java.awt.GridBagConstraints());
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPasswordActionPerformed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
        
         
         int ID = 0;
+        String Password = Funciones.encryptPassword(String.valueOf(this.txtPassword.getPassword()));   
         
         try {
             ID = Integer.parseInt(this.txtId.getText());
         
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "El ID que insertó no es un ID valido", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
         }
         
-        
-        
-        ((Main) SwingUtilities.getWindowAncestor(this)).changePage(ID, "");
+        ((Main) SwingUtilities.getWindowAncestor(this)).changePage(ID, Password);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txtIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdActionPerformed
@@ -143,6 +132,6 @@ public class Login extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JTextField txtId;
-    private javax.swing.JTextField txtPassword;
+    private javax.swing.JPasswordField txtPassword;
     // End of variables declaration//GEN-END:variables
 }
