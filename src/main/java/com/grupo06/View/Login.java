@@ -105,18 +105,15 @@ public class Login extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-        int ID = 0;
+        String user = this.txtId.getText();
         String Password = Funciones.encryptPassword(String.valueOf(this.txtPassword.getPassword()));
 
-        try {
-            ID = Integer.parseInt(this.txtId.getText());
-
-        } catch (NumberFormatException e) {
+        if (!Funciones.hasText(user)) {
             JOptionPane.showMessageDialog(null, "El ID que insertó no es un ID valido", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
-        ((Main) SwingUtilities.getWindowAncestor(this)).changePage(ID, Password);
+        ((Main) SwingUtilities.getWindowAncestor(this)).changePage(user, Password);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txtIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdActionPerformed

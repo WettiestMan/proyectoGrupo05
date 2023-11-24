@@ -79,10 +79,9 @@ public class Main extends javax.swing.JFrame {
         });
     }
     
-    public void changePage(int ID, String Password) {
+    public void changePage(String user, String Password) {
     
         String consulta = "SELECT Contrasena FROM Empleados WHERE id_Empleado = ?";
-        
               
         
         if (true) {
