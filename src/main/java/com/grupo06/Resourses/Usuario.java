@@ -14,9 +14,9 @@ public class Usuario extends Persona {
     protected String usuario;
     protected String contrasena;
     
-    public Usuario(LocalDate fechaNacimiento, int DNI, String nombre,
-            String apellidos, String usuario, String contrasena) {
-        super(fechaNacimiento, DNI, nombre, apellidos);
+    public Usuario(int id, LocalDate fechaNacimiento, int DNI, String nombre,
+       String apellidos, String usuario, String contrasena) {
+        super(id, fechaNacimiento, DNI, nombre, apellidos);
         this.usuario = usuario;
         this.contrasena = contrasena;
     }
@@ -40,7 +40,7 @@ public class Usuario extends Persona {
     @Override
     public String toString() {
         return String.format("[fechaNacimiento: %s, Nombre: %s, "
-                + "Apellidos: %s, DNI: %d, Usuario: %s, Contraseña: %s]",
+                + "Apellidos: %s, DNI: %s, Usuario: %s, Contraseña: %s]",
                 fechaNacimiento, nombre,apellidos, DNI,
                 usuario, contrasena);
     }

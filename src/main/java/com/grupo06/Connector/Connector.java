@@ -1,5 +1,6 @@
 package com.grupo06.Connector;
 
+import com.grupo06.Private.Config;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -12,9 +13,9 @@ public class Connector {
     public static Connection getConnection(String databaseName) {
         
         try {
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/" + databaseName,
-                    "root", "1234");
-
+            Connection connection = DriverManager.getConnection(Config.URL + databaseName,
+                    Config.USERNAME, Config.PASSWORD);
+          
             return connection;
         } catch (SQLException e) {
             throw new IllegalStateException("Cannot connect to the database!", e);

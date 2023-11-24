@@ -18,6 +18,7 @@ public class DetallePago implements Serializable {
     private Integer idPag;
     private Integer idEstClas;
 
+
     public DetallePago(int costo, String descripcion, String razon, Integer idPag, Integer idEstClas) {
         this.costo = costo;
         this.descripcion = descripcion;

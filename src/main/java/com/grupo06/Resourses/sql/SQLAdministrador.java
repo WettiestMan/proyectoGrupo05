@@ -1,7 +1,8 @@
+
 package com.grupo06.Resourses.sql;
 
-import com.grupo06.Connector.*;
-import com.grupo06.Resourses.Estudiante;
+import com.grupo06.Connector.Connector;
+import com.grupo06.Resourses.usuario.Administrador;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -11,36 +12,38 @@ import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SQLEstudiante {
+/**
+ *
+ * @author Cristopher
+ */
+public class SQLAdministrador {
+    private static final String SELECT = "SELECT * FROM Administradores";
+    private static final String INSERT = "INSERT INTO Administradores(fechaNac,nombre,apellidos,DNI,usuario,contraseña) VALUES(?,?,?,?,?,?)";
+    private static final String UPDATE = "UPDATE Administradores SET fechaNac=?,nombre=?,apellidos=?,DNI=?,usuario=?,contraseña=? WHERE id_Administrador=?";
+    private static final String DELETE = "DELETE FROM Administradores WHERE id_Administrador=?";
 
-    private static final String SELECT = "SELECT * FROM Estudiantes";
-    private static final String INSERT = "INSERT INTO Estudiantes(fechaNac,Nombre,Apellidos,Grado,DNI,Correo,numero_telefonico) VALUES(?,?,?,?,?,?,?)";
-    private static final String UPDATE = "UPDATE Estudiantes SET fechaNac=?,Nombre=?,Apellidos=?,Grado=?,DNI=?,Correo=?,numero_telefonico=? WHERE id_Estudiante=?";
-    private static final String DELETE = "DELETE FROM Estudiantes WHERE id_Estudiante=?";
-
-    public List<Estudiante> SQL_SELECT() {
+    public List<Administrador> SQL_SELECT() {
         Connection conn = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
-        List<Estudiante> estudiantes = new ArrayList<>();
-        Estudiante estudiante = null;
+        List<Administrador> administradores = new ArrayList<>();
+        Administrador administrador = null;
         try {
-            conn = Connector.getConnection("DB_Escuela");
+            conn = Connector.getConnection("db_escuela");
             pstmt = conn.prepareStatement(SELECT);
             rs = pstmt.executeQuery();
             
             while (rs.next()) {
-                int id = rs.getInt("id_Estudiante");
+                int id = rs.getInt("id_Administrador");
                 Date fechaNacimiento = rs.getDate("fechaNac");
-                String dni = rs.getString("DNI");
-                String nombre = rs.getString("Nombre");
-                String apellido = rs.getString("Apellidos");
-                byte grado = rs.getByte("Grado");
-                String correo = rs.getString("Correo");
-                int numTelefono = rs.getInt("numero_telefonico");
+                String nombre = rs.getString("nombre");
+                String apellidos = rs.getString("apellidos");
+                int dni = rs.getInt("DNI");
+                String usuario = rs.getString("usuario");
+                String contraseña = rs.getString("contraseña");
 
-                estudiante = new Estudiante(id, fechaNacimiento.toLocalDate(), dni, nombre, apellido, grado, correo, numTelefono);
-                estudiantes.add(estudiante);
+                administrador = new Administrador(id,fechaNacimiento.toLocalDate(), nombre, apellidos,dni,usuario,contraseña);
+                administradores.add(administrador);
             }
         } catch (SQLException ex) {
             ex.printStackTrace(System.out);
@@ -54,23 +57,22 @@ public class SQLEstudiante {
             }
         }
         
-        return estudiantes;
+        return administradores;
     }
     
-    public int SQL_INSERT(Estudiante estudiante){
+    public int SQL_INSERT(Administrador administrador){
         Connection conn = null;
         PreparedStatement pstmt = null;
         int registros=0;
         try{
-            conn = Connector.getConnection("DB_Escuela");
+            conn = Connector.getConnection("db_escuela");
             pstmt = conn.prepareStatement(INSERT);
-            pstmt.setDate(1, (Date) Date.from(estudiante.getFechaNacimiento().atStartOfDay(ZoneId.systemDefault()).toInstant()));
-            pstmt.setString(2, estudiante.getNombre());
-            pstmt.setString(3, estudiante.getApellidos());
-            pstmt.setByte(4, estudiante.getGrado());
-            pstmt.setString(5, estudiante.getDNI());
-            pstmt.setString(6, estudiante.getCorreo());
-            pstmt.setInt(7, estudiante.getNumTelefono());
+            pstmt.setDate(1, (Date) Date.from(administrador.getFechaNacimiento().atStartOfDay(ZoneId.systemDefault()).toInstant()));
+            pstmt.setInt(2, administrador.getDNI());
+            pstmt.setString(3, administrador.getNombre());
+            pstmt.setString(4, administrador.getApellidos());
+            pstmt.setString(5, administrador.getUsuario());
+            pstmt.setString(6, administrador.getContrasena());
          
             registros = pstmt.executeUpdate();
         } catch (SQLException ex){
@@ -87,21 +89,20 @@ public class SQLEstudiante {
         return registros;
     }
     
-    public int SQL_UPDATE(Estudiante estudiante){
+    public int SQL_UPDATE(Administrador administrador){
         Connection conn = null;
         PreparedStatement pstmt = null;
         int registros=0;
         try{
-            conn = Connector.getConnection("DB_Escuela");
+            conn = Connector.getConnection("db_escuela");
             pstmt = conn.prepareStatement(UPDATE);
-            pstmt.setDate(1, (Date) Date.from(estudiante.getFechaNacimiento().atStartOfDay(ZoneId.systemDefault()).toInstant()));
-            pstmt.setString(2, estudiante.getNombre());
-            pstmt.setString(3, estudiante.getApellidos());
-            pstmt.setByte(4, estudiante.getGrado());
-            pstmt.setString(5, estudiante.getDNI());
-            pstmt.setString(6, estudiante.getCorreo());
-            pstmt.setInt(7, estudiante.getNumTelefono());
-            pstmt.setInt(8, estudiante.getId());
+            pstmt.setDate(1, (Date) Date.from(administrador.getFechaNacimiento().atStartOfDay(ZoneId.systemDefault()).toInstant()));
+            pstmt.setInt(2, administrador.getDNI());
+            pstmt.setString(3, administrador.getNombre());
+            pstmt.setString(4, administrador.getApellidos());
+            pstmt.setString(5, administrador.getUsuario());
+            pstmt.setString(6, administrador.getContrasena());
+            pstmt.setInt(8, administrador.getId());
             
             registros = pstmt.executeUpdate();
         } catch (SQLException ex){
@@ -118,14 +119,14 @@ public class SQLEstudiante {
         return registros;
     }
     
-    public int SQL_DELETE(Estudiante estudiante){
+    public int SQL_DELETE(Administrador administrador){
         Connection conn = null;
         PreparedStatement pstmt = null;
         int registros=0;
         try{
-            conn = Connector.getConnection("DB_Escuela");
+            conn = Connector.getConnection("db_escuela");
             pstmt = conn.prepareStatement(DELETE);
-            pstmt.setInt(1, estudiante.getId());
+            pstmt.setInt(1, administrador.getId());
             
             registros = pstmt.executeUpdate();
         } catch (SQLException ex){
