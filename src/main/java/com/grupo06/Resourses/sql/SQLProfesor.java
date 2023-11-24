@@ -2,13 +2,10 @@ package com.grupo06.Resourses.sql;
 
 import com.grupo06.Connector.Connector;
 import com.grupo06.Resourses.Profesor;
-import java.math.BigDecimal;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,7 +31,7 @@ public class SQLProfesor {
                 Integer id = rs.getInt("id_Profesor");
                 String nombre = rs.getString("nombre");
                 String apellido = rs.getString("apellidos");
-                BigDecimal sueldo = rs.getBigDecimal("sueldo");
+                int sueldo = rs.getInt("sueldo");
 
                 profesor = new Profesor(id, nombre, apellido, sueldo);
                 profesores.add(profesor);
@@ -63,7 +60,7 @@ public class SQLProfesor {
             pstmt = conn.prepareStatement(INSERT);
             pstmt.setString(1, profesor.getNombre());
             pstmt.setString(2, profesor.getApellidos());
-            pstmt.setBigDecimal(3, profesor.getSueldo());
+            pstmt.setInt(3, profesor.getSueldo());
          
             registros = pstmt.executeUpdate();
         } catch (SQLException ex){
@@ -89,7 +86,7 @@ public class SQLProfesor {
             pstmt = conn.prepareStatement(UPDATE);
             pstmt.setString(1, profesor.getNombre());
             pstmt.setString(2, profesor.getApellidos());
-            pstmt.setBigDecimal(3, profesor.getSueldo());
+            pstmt.setInt(3, profesor.getSueldo());
             pstmt.setInt(4, profesor.getId());
             
             registros = pstmt.executeUpdate();
@@ -130,5 +127,7 @@ public class SQLProfesor {
         
         return registros;
     }
+    
+    
     
 }
