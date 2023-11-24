@@ -83,10 +83,11 @@ public class Main extends javax.swing.JFrame {
     
         String consulta = "SELECT Contrasena FROM Empleados WHERE id_Empleado = ?";
         
+              
         
         if (true) {
         
-            MasterForm MF = new MasterForm();
+            MasterForm MF = new MasterForm("Tipo");
             
             MF.setSize(1024, 620);
             
