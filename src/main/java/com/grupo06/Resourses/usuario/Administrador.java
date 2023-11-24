@@ -12,9 +12,8 @@ import java.time.LocalDate;
  */
 public class Administrador extends com.grupo06.Resourses.Usuario{
     
-    public Administrador(LocalDate fechaNacimiento, int DNI, String nombre, String apellidos, String usuario, String contrasena) {
-        super(fechaNacimiento, DNI, nombre, apellidos, usuario, contrasena);
-        
+    public Administrador(int id, LocalDate fechaNacimiento, int DNI, String nombre, String apellidos, String usuario, String contrasena) {
+        super(id, fechaNacimiento, DNI, nombre, apellidos, usuario, contrasena);
     }
     public String getUsuario() {
         return usuario;
@@ -71,4 +70,5 @@ public class Administrador extends com.grupo06.Resourses.Usuario{
     public void setApellidos(String apellidos) {
         this.apellidos = apellidos;
     }
+
 }
