@@ -18,8 +18,8 @@ import java.util.List;
  */
 public class SQLAdministrador {
     private static final String SELECT = "SELECT * FROM Administradores";
-    private static final String INSERT = "INSERT INTO Administradores(fechaNac,nombre,apellidos,DNI,usuario,contraseña) VALUES(?,?,?,?,?,?)";
-    private static final String UPDATE = "UPDATE Administradores SET fechaNac=?,nombre=?,apellidos=?,DNI=?,usuario=?,contraseña=? WHERE id_Administrador=?";
+    private static final String INSERT = "INSERT INTO Administradores(fechaNac,nombre,apellidos,DNI,usuario,contrasena) VALUES(?,?,?,?,?,?)";
+    private static final String UPDATE = "UPDATE Administradores SET fechaNac=?,nombre=?,apellidos=?,DNI=?,usuario=?,contrasena=? WHERE id_Administrador=?";
     private static final String DELETE = "DELETE FROM Administradores WHERE id_Administrador=?";
 
     public List<Administrador> SQL_SELECT() {
@@ -40,9 +40,9 @@ public class SQLAdministrador {
                 String apellidos = rs.getString("apellidos");
                 String dni = rs.getString("DNI");
                 String usuario = rs.getString("usuario");
-                String contraseña = rs.getString("contraseña");
+                String contrasena = rs.getString("contrasena");
 
-                administrador = new Administrador(id,fechaNacimiento.toLocalDate(),dni, nombre, apellidos, usuario,contraseña);
+                administrador = new Administrador(id,fechaNacimiento.toLocalDate(),dni, nombre, apellidos, usuario,contrasena);
                 administradores.add(administrador);
             }
         } catch (SQLException ex) {
