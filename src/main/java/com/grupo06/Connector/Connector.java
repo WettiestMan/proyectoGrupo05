@@ -20,6 +20,7 @@ import java.sql.SQLException;
 public class Connector {
 
     public Connection getConnection(String databaseName) {
+        
         try {
             Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/" + databaseName,
                     "root", "1234");
