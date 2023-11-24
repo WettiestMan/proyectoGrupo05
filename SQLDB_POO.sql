@@ -9,7 +9,7 @@ CREATE TABLE Administradores (
     Nombre       VARCHAR(30) NOT NULL,
     Apellidos    VARCHAR(30) NOT NULL,
     Usuario      VARCHAR(256) NOT NULL,
-    Contraseña   VARCHAR(256) NOT NULL,
+    Contrasena   VARCHAR(256) NOT NULL,
     PRIMARY KEY (id_Administrador)
 );
 
@@ -20,7 +20,7 @@ CREATE TABLE Asistentes (
     Nombre       VARCHAR(30) NOT NULL,
     Apellidos    VARCHAR(30) NOT NULL,
     Usuario      VARCHAR(256) NOT NULL,
-    Contraseña   VARCHAR(256) NOT NULL,
+    Contrasena   VARCHAR(256) NOT NULL,
     PRIMARY KEY (id_Asistente)
 );
 
