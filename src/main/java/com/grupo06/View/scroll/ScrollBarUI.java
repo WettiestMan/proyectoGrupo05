@@ -1,4 +1,4 @@
-package com.malbarado.views.scroll;
+package com.grupo06.View.scroll;
 
 import java.awt.AlphaComposite;
 import java.awt.Color;

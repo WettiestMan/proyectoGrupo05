@@ -1,9 +1,13 @@
 package com.grupo06.Connector;
 
-import com.grupo06.Config.Config;
+import com.grupo06.Private.Config;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.sql.*;
 import javax.sql.DataSource;
 import org.apache.commons.dbcp2.BasicDataSource;
+
 
 public class Connector {
     

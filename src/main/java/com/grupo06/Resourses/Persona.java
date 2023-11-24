@@ -3,6 +3,7 @@ package com.grupo06.Resourses;
 import java.time.LocalDate;
 import java.io.Serializable;
 
+
 public abstract class Persona implements Serializable {
     protected Integer id;
     protected LocalDate fechaNacimiento;
