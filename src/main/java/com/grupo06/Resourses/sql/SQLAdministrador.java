@@ -102,7 +102,7 @@ public class SQLAdministrador {
             pstmt.setString(4, administrador.getApellidos());
             pstmt.setString(5, administrador.getUsuario());
             pstmt.setString(6, administrador.getContrasena());
-            pstmt.setInt(8, administrador.getId());
+            pstmt.setInt(7, administrador.getId());
             
             registros = pstmt.executeUpdate();
         } catch (SQLException ex){
