@@ -23,6 +23,8 @@ public class SQLAsignacionPermisos {
     private static final String UPDATE = "UPDATE asignacion_permisos SET id_Rol=?, id_Permiso=? WHERE id_Rol=? AND id_Permiso=?";
     private static final String DELETE = "DELETE FROM asignacion_permisos WHERE id_Rol=? AND id_Permiso=?";
     private static final String GET_BY_ID = "SELECT * FROM asignacion_permisos WHERE id_Rol=? AND id_Permiso=?";
+    private static final String GET_BY_ROLID = "SELECT * FROM asignacion_permisos WHERE id_Rol=?";
+    private static final String GET_BY_PERMID = "SELECT * FROM asignacion_permisos WHERE id_Permiso=?";
     
     public List<AsignacionPermisos> SQL_SELECT() {
         Connection conn = null;
@@ -164,5 +166,73 @@ public class SQLAsignacionPermisos {
         }
         
         return asignacion;
+    }
+    
+    public List<AsignacionPermisos> SQL_GET_BY_ROLID(int idRolSelecc) {
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        List<AsignacionPermisos> asignaciones = new ArrayList<>();
+        AsignacionPermisos asignacion = null;
+        try {
+            conn = Connector.getConnection("db_escuela");
+            pstmt = conn.prepareStatement(GET_BY_ROLID);
+            pstmt.setInt(1, idRolSelecc);
+            rs = pstmt.executeQuery();
+            
+            while (rs.next()) {
+                int idRol = rs.getInt("id_Rol");
+                int idPermiso = rs.getInt("id_Permiso");
+
+                asignacion = new AsignacionPermisos(idRol, idPermiso);
+                asignaciones.add(asignacion);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace(System.out);
+        } finally {
+            try {
+                Connector.close(rs);
+                Connector.close(pstmt);
+                Connector.close(conn);
+            } catch (SQLException ex){
+                ex.printStackTrace(System.out);
+            }
+        }
+        
+        return asignaciones;
+    }
+    
+    public List<AsignacionPermisos> SQL_GET_BY_PERMID(int idPermisoSelecc) {
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        List<AsignacionPermisos> asignaciones = new ArrayList<>();
+        AsignacionPermisos asignacion = null;
+        try {
+            conn = Connector.getConnection("db_escuela");
+            pstmt = conn.prepareStatement(GET_BY_PERMID);
+            pstmt.setInt(1, idPermisoSelecc);
+            rs = pstmt.executeQuery();
+            
+            while (rs.next()) {
+                int idRol = rs.getInt("id_Rol");
+                int idPermiso = rs.getInt("id_Permiso");
+
+                asignacion = new AsignacionPermisos(idRol, idPermiso);
+                asignaciones.add(asignacion);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace(System.out);
+        } finally {
+            try {
+                Connector.close(rs);
+                Connector.close(pstmt);
+                Connector.close(conn);
+            } catch (SQLException ex){
+                ex.printStackTrace(System.out);
+            }
+        }
+        
+        return asignaciones;
     }
 }
