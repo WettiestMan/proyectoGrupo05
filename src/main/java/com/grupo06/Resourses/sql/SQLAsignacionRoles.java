@@ -23,6 +23,8 @@ public class SQLAsignacionRoles {
     private static final String UPDATE = "UPDATE asignacion_roles SET id_Empleado=?, id_Rol=? WHERE id_Empleado=? AND id_Rol=?";
     private static final String DELETE = "DELETE FROM asignacion_roles WHERE id_Empleado=? AND id_Rol=?";
     private static final String GET_BY_ID = "SELECT * FROM asignacion_roles WHERE id_Empleado=? AND id_Rol=?";
+    private static final String GET_BY_EMPID = "SELECT * FROM asignacion_roles WHERE id_Empleado=?";
+    private static final String GET_BY_ROLID = "SELECT * FROM asignacion_roles WHERE id_Rol=?";
     
     public List<AsignacionRoles> SQL_SELECT() {
         Connection conn = null;
@@ -164,5 +166,73 @@ public class SQLAsignacionRoles {
         }
         
         return asignacion;
+    }
+    
+    public List<AsignacionRoles> SQL_GET_BY_EMPID(int idEmpSelecc) {
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        List<AsignacionRoles> asignaciones = new ArrayList<>();
+        AsignacionRoles asignacion = null;
+        try {
+            conn = Connector.getConnection("db_escuela");
+            pstmt = conn.prepareStatement(GET_BY_EMPID);
+            pstmt.setInt(1, idEmpSelecc);
+            rs = pstmt.executeQuery();
+            
+            while (rs.next()) {
+                int idEmpleado = rs.getInt("id_Empleado");
+                int idRol = rs.getInt("id_Rol");
+
+                asignacion = new AsignacionRoles(idEmpleado, idRol);
+                asignaciones.add(asignacion);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace(System.out);
+        } finally {
+            try {
+                Connector.close(rs);
+                Connector.close(pstmt);
+                Connector.close(conn);
+            } catch (SQLException ex){
+                ex.printStackTrace(System.out);
+            }
+        }
+        
+        return asignaciones;
+    }
+    
+    public List<AsignacionRoles> SQL_GET_BY_ROLID(int idRolSelecc) {
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        List<AsignacionRoles> asignaciones = new ArrayList<>();
+        AsignacionRoles asignacion = null;
+        try {
+            conn = Connector.getConnection("db_escuela");
+            pstmt = conn.prepareStatement(GET_BY_ROLID);
+            pstmt.setInt(1, idRolSelecc);
+            rs = pstmt.executeQuery();
+            
+            while (rs.next()) {
+                int idEmpleado = rs.getInt("id_Empleado");
+                int idRol = rs.getInt("id_Rol");
+
+                asignacion = new AsignacionRoles(idEmpleado, idRol);
+                asignaciones.add(asignacion);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace(System.out);
+        } finally {
+            try {
+                Connector.close(rs);
+                Connector.close(pstmt);
+                Connector.close(conn);
+            } catch (SQLException ex){
+                ex.printStackTrace(System.out);
+            }
+        }
+        
+        return asignaciones;
     }
 }
